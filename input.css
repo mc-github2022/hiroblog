@@ -51,7 +51,10 @@
     @apply !font-crimson;
   }
   nav {
-    @apply fixed backdrop-blur-sm bg-primary/90 w-[50%] top-0 right-0 h-[100%] z-[3] flex items-center lg:bg-transparent lg:w-[unset] lg:static;
+    @apply fixed backdrop-blur-sm bg-primary/90 w-[50%] top-0 right-[-100%]  h-[100%] z-[3] flex items-center lg:bg-transparent lg:w-[unset] lg:static transition-all ease-in-out;
+  }
+  nav.active {
+    @apply right-0 transition-all ease-in-out;
   }
   nav ul {
     @apply p-5 lg:flex lg:items-center lg:gap-12 text-white w-full;

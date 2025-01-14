@@ -50,8 +50,7 @@
                             <li>翻訳指導</li>
                         </ul>
                     </nav>
-                    
-            
+
                     <button class="toggleNav block lg:hidden relative w-[20px] h-[20px] ml-auto z-10">
                         <span></span>
                         <span></span>

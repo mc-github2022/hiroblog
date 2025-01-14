@@ -27,6 +27,13 @@
         </div>
     </footer>
     <script type="module">
+        const nav = document.querySelector('nav');
+        const toggleMenu = document.querySelector('.toggleNav');
+            toggleMenu.addEventListener('click', ()=>{
+                toggleMenu.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
         var slider = tns({
             container: '.my-slider',
             items: 3,
