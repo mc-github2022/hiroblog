@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("/font/CrimsonPro-VariableFont_wght.woff2") format("truetype");
+  font-display: fallback;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-crimson;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-[1] font-semibold;
+  }
+  h2 {
+    @apply text-[48px];
+  }
+  h3 {
+    @apply text-[36px];
+  }
+  h4 {
+    @apply text-[24px];
+  }
+  h5 {
+    @apply text-[18px];
+  }
+  h6 {
+    @apply text-[14px];
+  }
+  p {
+    @apply text-[18px] leading-[1.5];
+  }
+}
+
+@layer components {
+  .customContainer {
+    @apply w-[1366px] mx-auto px-5 md:px-10;
+  }
+  .btn {
+    @apply border-2 border-primary text-primary px-6 text-[18px] py-1 inline-block hover:bg-black hover:text-white hover:border-black hover:transition-all transition-all;
+  }
+  #wpdcom {
+    @apply !font-crimson;
+  }
+  nav {
+    @apply fixed backdrop-blur-sm bg-primary/90 w-[50%] top-0 right-0 h-[100%] z-[3] flex items-center lg:bg-transparent lg:w-[unset] lg:static;
+  }
+  nav ul {
+    @apply p-5 lg:flex lg:items-center lg:gap-12 text-white w-full;
+  }
+  nav ul li {
+    @apply py-3 text-lg text-right border-b border-white/20 lg:border-b-0;
+  }
+  .toggleNav span {
+    @apply block w-[10px] h-[3px] bg-white transition-all relative z-[3];
+  }
+  .toggleNav span:nth-child(2) {
+    @apply w-[px] absolute top-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav span:nth-child(1) {
+    @apply w-[px] absolute top-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(4) {
+    @apply w-[px] absolute bottom-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(3) {
+    @apply w-[20px] my-1 rounded-full;
+  }
+  .toggleNav span:nth-child(5) {
+    @apply w-[10px] absolute bottom-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav.active span:nth-child(5) {
+    @apply w-[13px] absolute bottom-0 rotate-45 -translate-y-[4px]  -translate-x-[1px] left-[50%] rounded-full;
+  }
+  .toggleNav.active span:nth-child(4) {
+    @apply w-[13px] absolute bottom-0 -rotate-45 -translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(1) {
+    @apply w-[13px] absolute top-0 rotate-45 translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(2) {
+    @apply w-[13px] absolute top-0 -rotate-45 translate-y-[4px]  -translate-x-[1px]  rounded-full;
+  }
+  .toggleNav.active span:nth-child(3) {
+    @apply opacity-0;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .customContainer {
+    @apply w-full;
+  }
+}
+
+.addShadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.addScroll::-webkit-scrollbar {
+  width: 15px;
+}
+.addScroll::-webkit-scrollbar-track {
+  background: #f7f2ed;
+  border-radius: 15px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+.addScroll::-webkit-scrollbar-thumb {
+  background: #0268a8;
+  border-radius: 15px;
+}
+
+.listItem:last-child > div {
+  border: none !important;
+}
+
+.wpd-comments-open,
+#comments {
+  margin: 0 !important;
+}
