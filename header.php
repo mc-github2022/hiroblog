@@ -42,12 +42,23 @@
                     </a>
                     <nav>
                         <ul>
-                            <li>Joy</li>
-                            <li>Faith</li>
-                            <li>World</li>
-                            <li>Music</li>
-                            <li>Bible</li>
-                            <li>翻訳指導</li>
+                            <?php 
+                                $args = array(
+                                'post_type' => 'resource',
+                                'posts_per_page' => -1,
+                                );
+                                $newQuery = new WP_Query($args)
+                                ?>
+                            <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post();?>
+                                <li><a href="<?php the_permalink() ?>"><?php the_field('nav_title') ?></a></li>
+                            <?php
+                                endwhile;
+                                else :
+                                    echo "no available content yet";
+                                endif;
+                                wp_reset_postdata();
+                            ?>
+                            <li><a href="http://localhost/wphiroblog/instruction/">翻訳指導</a></li>
                         </ul>
                     </nav>
 

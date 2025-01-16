@@ -42,7 +42,7 @@
 
 @layer components {
   .customContainer {
-    @apply w-[1366px] mx-auto px-5 md:px-10;
+    @apply w-[1366px] max-w-[2500px] mx-auto px-5 md:px-10;
   }
   .btn {
     @apply border-2 border-primary text-primary px-6 text-[18px] py-1 inline-block hover:bg-black hover:text-white hover:border-black hover:transition-all transition-all;
@@ -51,7 +51,7 @@
     @apply !font-crimson;
   }
   nav {
-    @apply fixed backdrop-blur-sm bg-primary/90 w-[50%] top-0 right-[-100%]  h-[100%] z-[3] flex items-center lg:bg-transparent lg:w-[unset] lg:static transition-all ease-in-out;
+    @apply fixed backdrop-blur-sm lg:backdrop-blur-0 bg-primary/90 w-[70%] top-0 right-[-100%]  h-[100%] z-[3] flex items-center lg:bg-transparent lg:w-[unset] lg:static transition-all ease-in-out;
   }
   nav.active {
     @apply right-0 transition-all ease-in-out;

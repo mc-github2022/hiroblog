@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="videoContainer absolute top-0 w-full">
-            <video autoplay muted loop preload="auto" class="w-full h-screen object-cover object-top">
+            <video autoplay muted loop preload="auto" class="w-full max-w-[2500px] mx-auto h-screen object-cover object-top">
             <source src="<?php echo get_template_directory_uri()?>/img/sirHiro.mp4" type="video/mp4">
             <!-- <source src="<?php echo get_template_directory_uri()?>/img/sirHiro.ogg" type="video/ogg"> -->
             Your browser does not support the video tag.
@@ -89,13 +89,28 @@
                         <div class="contentList addScroll overflow-scroll overflow-x-hidden px-5 lg:px-12">
                             <div class="md:h-[308px]">
                                 <ul class="grid grid-cols-1">
-                                    <li class="listItem group hover:bg-primary hover:text-white ">
+
+                                    <?php 
+                                        if( have_rows('resource_item') ):
+                                            while( have_rows('resource_item') ) : the_row();
+                                    ?>
+
+
+
+                                    <li class="listItem group hover:bg-[#f5f5f5] ">
                                         <div class="flex items-center justify-around py-4 lg:py-7 border-b border-black border-opacity-50">
-                                            <img class="text-white" src="<?php echo get_template_directory_uri()?>/img/messages-square.webp" alt="">
-                                            <h4 class="text-[16px] md:text-[24px]">Why we do what we do</h4>
-                                            <a href="#" class="btn group-hover:!text-white group-hover:!border-white">Comments</a>
+                                            <img class="text-white" src="<?php echo get_template_directory_uri()?>/img/<?php the_sub_field('content_type') ?>.webp" alt="">
+                                            <h4 class="text-[16px] md:text-[24px]"><?php the_sub_field('title') ?></h4>
+                                            <a href="<?php the_sub_field('link') ?>" class="btn"><?php the_sub_field('link_text') ?></a>
                                         </div>
                                     </li>
+
+                                
+                                    <?php
+                                            endwhile;
+                                        endif;
+                                    ?>
+                                            
                                 </ul>
                             </div>
                         </div>
@@ -138,78 +153,45 @@
                 </h4>
             </div>
             <div class="my-slider">
+
+                <?php 
+                            $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 3,
+                            );
+                            $newQuery = new WP_Query($args)
+                    ?>
+
+                <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post();?>
+
+
                 <div class="exploreItem group">
                     <div class="mb-6 relative">
                         <div class="theGradient group-hover:bg-opacity-50 hover:transition-all transition-all z-10 bg-primary bg-opacity-0 absolute top-0 left-0 h-full w-full grid place-items-center">
                         <div class="relative z-10">
-                            <a href="#" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
+                            <a href="<?php the_permalink(); ?>" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
                         </div>
                         </div>
                         <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
                     </div>
                     <div class="theTitle mb-6">
-                        <h4 class="font-semibold mb-3">Camping trip to Death Valley</h4>
+                        <h4 class="font-semibold mb-3"><?php the_title() ?></h4>
                         <h6 class="mb-1">Category: Adventure</h6>
                         <h6>July 07, 2019</h6>
                     </div>
-                    <p class="theExcerpt">
-                        Went on a camping trip for 3 days with
-                        the Grahams who we have known for
-                        years. Our daughters played water polo
-                        together through High School and they
-                        are teammates and also roommates in
-                        college water polo team. We spent our
-                        thanksgiving together in the desert.
-                    </p>
+                    <div class="theExcerpt">
+                        <?php the_excerpt() ?>
+                    </div>
                 </div> 
-                <div class="exploreItem group">
-                    <div class="mb-6 relative">
-                        <div class="theGradient group-hover:bg-opacity-50 hover:transition-all transition-all z-10 bg-primary bg-opacity-0 absolute top-0 left-0 h-full w-full grid place-items-center">
-                        <div class="relative z-10">
-                            <a href="#" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
-                        </div>
-                        </div>
-                        <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
-                    </div>
-                    <div class="theTitle mb-6">
-                        <h4 class="font-semibold mb-3">Camping trip to Death Valley</h4>
-                        <h6 class="mb-1">Category: Adventure</h6>
-                        <h6>July 07, 2019</h6>
-                    </div>
-                    <p class="theExcerpt">
-                        Went on a camping trip for 3 days with
-                        the Grahams who we have known for
-                        years. Our daughters played water polo
-                        together through High School and they
-                        are teammates and also roommates in
-                        college water polo team. We spent our
-                        thanksgiving together in the desert.
-                    </p>
-                </div> 
-                <div class="exploreItem group">
-                    <div class="mb-6 relative">
-                        <div class="theGradient group-hover:bg-opacity-50 hover:transition-all transition-all z-10 bg-primary bg-opacity-0 absolute top-0 left-0 h-full w-full grid place-items-center">
-                        <div class="relative z-10">
-                            <a href="#" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
-                        </div>
-                        </div>
-                        <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
-                    </div>
-                    <div class="theTitle mb-6">
-                        <h4 class="font-semibold mb-3">Camping trip to Death Valley</h4>
-                        <h6 class="mb-1">Category: Adventure</h6>
-                        <h6>July 07, 2019</h6>
-                    </div>
-                    <p class="theExcerpt">
-                        Went on a camping trip for 3 days with
-                        the Grahams who we have known for
-                        years. Our daughters played water polo
-                        together through High School and they
-                        are teammates and also roommates in
-                        college water polo team. We spent our
-                        thanksgiving together in the desert.
-                    </p>
-                </div> 
+
+                <?php
+                    endwhile;
+                    else :
+                        echo "no available content yet";
+                    endif;
+                    wp_reset_postdata();
+                ?>
+            
             </div>
         </div>
     </div>

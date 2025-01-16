@@ -45,6 +45,16 @@
             </div>
             <div class="my-slider">
 
+            <?php 
+                    $args = array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 3,
+                    );
+                    $newQuery = new WP_Query($args)
+            ?>
+
+                <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post();?>
+
 
                 <div class="exploreItem group">
                     <div class="mb-6 relative">
@@ -56,20 +66,22 @@
                         <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
                     </div>
                     <div class="theTitle mb-6">
-                        <h4 class="font-semibold mb-3">Camping trip to Death Valley</h4>
+                        <h4 class="font-semibold mb-3"><?php the_title() ?></h4>
                         <h6 class="mb-1">Category: Adventure</h6>
                         <h6>July 07, 2019</h6>
                     </div>
-                    <p class="theExcerpt">
-                        Went on a camping trip for 3 days with
-                        the Grahams who we have known for
-                        years. Our daughters played water polo
-                        together through High School and they
-                        are teammates and also roommates in
-                        college water polo team. We spent our
-                        thanksgiving together in the desert.
-                    </p>
+                    <div class="theExcerpt">
+                        <?php the_excerpt() ?>
+                    </div>
                 </div> 
+
+            <?php
+                endwhile;
+                else :
+                    echo "no available content yet";
+                endif;
+                wp_reset_postdata();
+            ?>
               
             </div>
         </div>
