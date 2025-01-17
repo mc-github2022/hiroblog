@@ -30,6 +30,18 @@
             </div>
         </div>
         <?php the_content(); ?>
+        <div class="my-8">
+            <?php 
+                if( have_rows('support_details') ):
+                    while( have_rows('support_details') ) : the_row();
+             ?>
+                <p><span><?php the_sub_field('label') ?> :</span> <?php the_sub_field('desc') ?></p>
+
+            <?php
+                    endwhile;
+                endif;
+            ?>
+        </div>
         <?php echo do_shortcode('[wpdiscuz_comments]') ?>
     </div>
 </div>
@@ -60,10 +72,10 @@
                     <div class="mb-6 relative">
                         <div class="theGradient group-hover:bg-opacity-50 hover:transition-all transition-all z-10 bg-primary bg-opacity-0 absolute top-0 left-0 h-full w-full grid place-items-center">
                         <div class="relative z-10">
-                            <a href="#" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
+                            <a href="<?php the_permalink() ?>" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
                         </div>
                         </div>
-                        <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
+                        <img class="w-full object-cover h-[400px] object-top" src="<?php echo get_the_post_thumbnail_url()?>"  alt="">
                     </div>
                     <div class="theTitle mb-6">
                         <h4 class="font-semibold mb-3"><?php the_title() ?></h4>
