@@ -30,7 +30,7 @@
 <body>
 
     <?php if(is_front_page()) : ?>
-        <div class="banner h-[90vh] overflow-y-hidden">
+        <div class="banner h-[60vh] lg:h-[90vh]  overflow-y-hidden">
     <?php else : ?>
         <div class="banner h-[60vh] relative overflow-y-hidden">
     <?php endif; ?>

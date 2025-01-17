@@ -1,22 +1,22 @@
 <?php get_header() ?>
         <div class="bannerContent relative z-[2]">
             <div class="customContainer">
-                <div class="h-[50vh] flex items-end">
-                    <img class="z-0" src="<?php echo get_template_directory_uri()?>/img/heroText.webp" alt="">
+                <div class="h-[30vh] lg:h-[50vh] flex items-end">
+                    <img class="z-0 w-[50%] lg:w-auto" src="<?php echo get_template_directory_uri()?>/img/heroText.webp" alt="">
                 </div>
             </div>
         </div>
         <div class="videoContainer absolute top-0 w-full">
-            <video autoplay muted loop preload="auto" class="w-full max-w-[2500px] mx-auto h-screen object-cover object-top">
+            <video autoplay muted loop preload="auto" class="w-full max-w-[2500px] mx-auto h-[60vh] lg:h-screen object-cover object-top">
             <source src="<?php echo get_template_directory_uri()?>/img/sirHiro.mp4" type="video/mp4">
             <!-- <source src="<?php echo get_template_directory_uri()?>/img/sirHiro.ogg" type="video/ogg"> -->
             Your browser does not support the video tag.
             </video>
         </div>
-        <div class="theGradient  z-0 bg-gradient-to-r from-black/50 via-primary/50 to-white/0 absolute top-0 h-full w-full">asd</div>
+        <div class="theGradient  z-0 bg-gradient-to-r from-black/50 via-primary/50 to-white/0 absolute top-0 h-[60vh] lg:h-screen w-full">asd</div>
     </div>
 
-    <div class="introduction pt-[180px] pb-[80px] text-center">
+    <div class="introduction pt-[80px] lg:pt-[180px] pb-[80px] text-center">
         <div class="customContainer">
             <h2 class="text-2xl w-full md:w-[35%] mx-auto font-bold" >A captivating space offering tales that inspire, motivate, and bring balance to life’s journey.</h2>
         </div>
@@ -39,19 +39,19 @@
 
                 <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post();?>
 
-                    <img class="w-full h-full object-cover" src="<?php echo get_the_post_thumbnail_url()?>" alt="">
+                    <img class="w-full object-cover h-[400px] object-top" src="<?php echo get_the_post_thumbnail_url()?>" alt="">
                     <div class="insightContent">
                         <div class="theTitle mb-6">
-                            <h3 class="font-semibold text-primary"><?php the_title() ?></h3>
-                            <h6 class="mb-1">Category: Friends</h6>
-                            <h6>July 07, 2019</h6>
+                            <h3 class="font-semibold text-primary mb-2"><?php the_title() ?></h3>
+                            <h6 class="mb-1 flex items-center"><span class="mr-1">Category:</span> <?php the_category(); ?></h6>
+                            <h6><?php the_date('M-d-Y') ?></h6>
                         </div>
                         <div class="excerpt">
                             <div class="mb-6">
                               <?php the_excerpt() ?>
+                            </div>
                         </div>
-                            <a href="<?php echo the_permalink(); ?>" class="btn">READ MORE</a>
-                        </div>
+                        <a href="<?php echo the_permalink(); ?>" class="btn">READ MORE</a>
                     </div>
 
                 <?php
@@ -85,9 +85,9 @@
 
 
                 <div class="resourcesCatItem grid grid-cols-1 lg:grid-cols-[_2fr_1fr] addShadow gap-12">
-                    <div class="resourceContent py-12">
+                    <div class="resourceContent pb-6 lg:py-12 order-2 lg:order-1">
                         <div class="contentList addScroll overflow-scroll overflow-x-hidden px-5 lg:px-12">
-                            <div class="md:h-[308px]">
+                            <div class="h-[308px]">
                                 <ul class="grid grid-cols-1">
 
                                     <?php 
@@ -98,9 +98,11 @@
 
 
                                     <li class="listItem group hover:bg-[#f5f5f5] ">
-                                        <div class="flex items-center justify-around py-4 lg:py-7 border-b border-black border-opacity-50">
-                                            <img class="text-white" src="<?php echo get_template_directory_uri()?>/img/<?php the_sub_field('content_type') ?>.webp" alt="">
-                                            <h4 class="text-[16px] md:text-[24px]"><?php the_sub_field('title') ?></h4>
+                                        <div class="flex items-center gap-4 justify-between py-4 lg:py-7 border-b border-black border-opacity-50 ">
+                                            <div class="flex items-center gap-4">
+                                                <img class="text-white" src="<?php echo get_template_directory_uri()?>/img/<?php the_sub_field('content_type') ?>.webp" alt="">
+                                                <h4 class="text-[16px] md:text-[24px]"><?php the_sub_field('title') ?></h4>
+                                            </div>
                                             <a href="<?php the_sub_field('link') ?>" class="btn"><?php the_sub_field('link_text') ?></a>
                                         </div>
                                     </li>
@@ -115,20 +117,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="resourceType relative h-[404px]">
-                        <div class="h-full grid place-items-center">
-                            <div class="theGradient  z-[2] bg-primary bg-opacity-50 absolute top-0 h-full w-full"></div>
-                            <img class="w-full h-full object-cover absolute top-0 left-0" src="<?php echo get_the_post_thumbnail_url()?>" alt="">
-                            <div class="relative z-[2] text-center text-white">
-                                <h3 class="mb-4">
-                                    <?php the_title(); ?>
-                                </h3>
-                                <div class="w-[80%] mx-auto">
-                                    <?php the_excerpt(); ?>
+                    <div class="order-1 lg:order-2">
+                        <div class="resourceType relative h-[100px] lg:h-[404px]">
+                            <div class="h-full grid place-items-center">
+                                <div class="theGradient  z-[2] bg-primary bg-opacity-50 absolute top-0 h-full w-full"></div>
+                                <img class="w-full h-full object-cover absolute top-0 left-0" src="<?php echo get_the_post_thumbnail_url()?>" alt="">
+                                <div class="relative z-[2] text-center text-white">
+                                    <h3 class="mb-4">
+                                        <?php the_title(); ?>
+                                    </h3>
+                                    <div class="hidden lg:block  mx-auto">
+                                        <?php the_excerpt(); ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+         
                 </div>
 
                 <?php
@@ -144,7 +149,7 @@
     </div>
 
     <div class="explorePost bg-secondary py-20">
-        <div class="customContainer">
+        <div class="customContainer relative">
             <div class="sectionIntro text-center mb-16">
                 <h2 class="text-[40px] font-semibold text-primary">Explore & Inspire</h2>
                 <h4>
@@ -157,7 +162,8 @@
                 <?php 
                             $args = array(
                             'post_type' => 'post',
-                            'posts_per_page' => 3,
+                            'posts_per_page' => -1,
+                            'offset'	=> 1,
                             );
                             $newQuery = new WP_Query($args)
                     ?>
@@ -172,12 +178,12 @@
                             <a href="<?php the_permalink(); ?>" class="btn !text-white !border-white hover:!bg-transparent">READ MORE</a>
                         </div>
                         </div>
-                        <img class="w-full object-cover" src="<?php echo get_template_directory_uri()?>/img/camping-trip.webp" alt="">
+                        <img class="w-full object-cover h-[400px] object-top" src="<?php echo get_the_post_thumbnail_url()?>" alt="">
                     </div>
                     <div class="theTitle mb-6">
                         <h4 class="font-semibold mb-3"><?php the_title() ?></h4>
-                        <h6 class="mb-1">Category: Adventure</h6>
-                        <h6>July 07, 2019</h6>
+                        <h6 class="mb-1 flex items-center"><span class="mr-1">Category:</span> <?php the_category(); ?></h6>
+                        <h6><?php the_date('M-d-Y') ?></h6>
                     </div>
                     <div class="theExcerpt">
                         <?php the_excerpt() ?>
@@ -208,7 +214,7 @@
                         <p>Get to know more about Hiro isogawa</p>
                     </div>
                     <div>
-                        <img class="lg:hidden w-[167px] h-[147px] mb-4" src="<?php echo get_template_directory_uri()?>/img/hiro-picture.webp" alt="">
+                        <img class="lg:hidden w-[167px] h-[147px] mb-4" src="<?php echo get_template_directory_uri()?>/img/hiro-picture.webp" alt="Hiro Portrait Image">
                     </div>
                     <div>
                         <h3 class="mb-4">Hiro Isogawa</h3>

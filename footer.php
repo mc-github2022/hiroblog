@@ -25,6 +25,8 @@
                 <p class="text-sm">Copyright 2025 | All Rights Reserved</p>
             </div>
         </div>
+        
+       
     </footer>
     <script type="module">
         const nav = document.querySelector('nav');
@@ -37,9 +39,26 @@
         var slider = tns({
             container: '.my-slider',
             items: 3,
+            loop: false,
             slideBy: 'page',
-            autoplay: true,
-            gutter: 20
+            nav: true,
+            navPosition:"bottom",
+            autoplay: false,
+            gutter: 20,
+            controlsText: ['<img src="<?php echo get_template_directory_uri()?>/img/circle-arrow-prev.png" alt="">', '<img src="<?php echo get_template_directory_uri()?>/img/circle-arrow-next.png" alt="">'],
+            responsive: {
+                280: {
+                    edgePadding: 20,
+                    gutter: 20,
+                    items: 1,
+                },
+                640: {
+                    items: 2,
+                },
+                900: {
+                    items: 3
+                },
+            }
         });
     </script>
 </body>

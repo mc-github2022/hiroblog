@@ -15,12 +15,12 @@
 <div class="singleCotent py-20">
     <div class="customContainer">
         <div class="wrapper grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <img class="w-full h-full object-cover" src="<?php echo get_template_directory_uri()?>/img/latest-insight.jpg" alt="">
+            <img class="w-full object-cover h-[400px] object-top" src="<?php echo get_the_post_thumbnail_url()?>"  alt="">
             <div class="insightContent">
                 <div class="theTitle mb-6">
-                    <h3 class="font-semibold text-primary"><?php the_title(); ?></h3>
-                    <h6 class="mb-1">Category: Friends</h6>
-                    <h6>July 07, 2019</h6>
+                    <h3 class="font-semibold text-primary mb-2"><?php the_title(); ?></h3>
+                    <h6 class="mb-1 flex items-center"><span class="mr-1">Category:</span> <?php the_category(); ?></h6>
+                    <h6><?php the_date('M-d-Y') ?></h6>
                 </div>
                 <div class="excerpt">
                     <p class="mb-6">
@@ -35,7 +35,7 @@
 </div>
 
 <div class="explorePost bg-secondary py-20">
-        <div class="customContainer">
+        <div class="customContainer relative">
             <div class="sectionIntro text-left mb-16">
                 <h2 class="text-[40px] font-semibold text-primary mb-4">More Posts</h2>
                 <h4 class="w-full lg:w-[60%]">
@@ -48,7 +48,7 @@
             <?php 
                     $args = array(
                     'post_type' => 'post',
-                    'posts_per_page' => 3,
+                    'posts_per_page' => -1,
                     );
                     $newQuery = new WP_Query($args)
             ?>
@@ -67,8 +67,8 @@
                     </div>
                     <div class="theTitle mb-6">
                         <h4 class="font-semibold mb-3"><?php the_title() ?></h4>
-                        <h6 class="mb-1">Category: Adventure</h6>
-                        <h6>July 07, 2019</h6>
+                        <h6 class="mb-1 flex items-center"><span class="mr-1">Category:</span> <?php the_category(); ?></h6>
+                        <h6><?php the_date('M-d-Y') ?></h6>
                     </div>
                     <div class="theExcerpt">
                         <?php the_excerpt() ?>
@@ -82,7 +82,6 @@
                 endif;
                 wp_reset_postdata();
             ?>
-              
             </div>
         </div>
     </div>
